@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>subscripe of iphone</title>
+    <style>
+       
+        
+        form {
+            display: table;
+            padding:50px;
+            margin: 30px auto;
+            border: thin dotted #454040;
+
+        }
+        
+        div.tableRow{
+            display: table-row;
+            border: thin dotted #454040;
+            
+        }
+
+        div.tableRow p{
+            display: table-cell; 
+        }
+        div.tableRow>p:first-child{
+            text-align: center;
+        }
+        div.tableRow input,div.tableRow select{
+            padding: 15px;
+            margin: 10px;
+        }
+        #subscribe{
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 auto 20px auto ;
+            border-bottom: 8px solid gray;
+        }
+        div.tableRow input[type=submit]{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="ss.php" id="myForm" name="myForm">
+        <div id="subscribe">訂購單</div>
+        <div class="tableRow">
+            <p>姓名：</p>
+            <p><input type="text" placeholder="訂購人姓名" id="name"></p>
+        </div>
+        <div class="tableRow">
+           <p>型號：</p> 
+           <p>
+               <select type="text" id="ipType" name="ipType">
+                    <option value="IPHONE7">IPHONE7</option>
+                    <option value="IPHONE7+">IPHONE7+</option>
+                </select>
+            </p>    
+        </div>
+        <div class="tableRow">
+            <p>數量：</p>
+            <p>
+               <select type="text" id="ipNum" onchange="updatePrice()">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </p>
+        </div>
+        <div class="tableRow">
+            <p>容量：</p>
+            <p>
+                <select name="size" id="size" onchange="updatePrice()">
+                    <option value="32G">32G</option>
+                    <option value="128G">128G</option>
+                    <option value="256G">256G</option>
+                </select>
+            </p>
+        </div>
+        <div class="tableRow">
+            <p>總計：</p>
+            <p><input type="text" placeholder="總計" id="total" disabled="disabled"></p>
+        </div>
+        <div class="tableRow">
+            <p></p>
+            <p><input type="submit" value="預購"></p>
+        </div>
+        
+        
+    </form>
+    <script>
+        function updatePrice() {
+            var ip7_32 = 24900;
+            var ip7_128 = 27900;
+            var ip7_256 = 32500;
+            var ip7Plus_32 = 26900;
+            var ip7Plus_128= 29900;
+            var ip7Plus_256= 34500;
+
+            var ipType = myForm.ipType.value;
+            var ipNum = myForm.ipNum.value;
+            var size = myForm.size.value;
+            if(ipType=="IPHONE7"){
+                switch (size) {
+                    case "32G":
+                        var total = ip7_32 * ipNum;
+                        break;
+                    case "128G":
+                        var total = ip7_128 * ipNum;
+                        break;
+                    case "256G":
+                        var total = ip7_256 * ipNum;
+                        break;
+                }
+            }else{
+                switch (size) {
+                    case "32G":
+                        var total = ip7Plus_32 * ipNum;
+                        break;
+                    case "128G":
+                        var total = ip7Plus_128 * ipNum;
+                        break;
+                    case "256G":
+                        var total = ip7Plus_256 * ipNum;
+                        break;
+                }
+            }
+
+
+            myForm.total.value = total;
+        }
+    </script>
+</body>
+
+</html>
