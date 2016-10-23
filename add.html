@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+    <script>
+        var area =new Array();
+        area[0] =["  "];
+        area[1] = ["中山區", "大安區", "中正區", "信義區", "內湖區"];
+        area[2] = ["新莊區", "板橋區", "三重區", "泰山區"];
+        /*
+        可以用 <body onload="index()">
+        function index(){
+            for(var i=0;i<area[0].length;i++){
+                myForm.city.options[i]= new Option(area[0][i],area[0][i]);
+            }
+        }*/
+        
+        
+        function update(index){
+            myForm.city.length = area[index].length;
+            for(var i=0;i<area[index].length;i++){
+                myForm.city.options[i]= new Option(area[index][i],area[index][i]);
+            
+            }
+        }
+        //new Option(value,text);
+    </script>
+</head>
+
+<body>
+    <form action="javascript:;" id="myForm">
+        <select name="country" id="country" onchange="update(this.selectedIndex)">
+            <option value="請選擇">請選擇</option>
+            <option value="台北市" >台北市</option>
+            <option value="新北市">新北市</option>
+        </select>
+        <select name="city" id="city">
+            <option value=""></option>
+        </select>
+        <input type="submit">
+    </form>
+    
+</body>
+
+</html>
